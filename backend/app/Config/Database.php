@@ -27,9 +27,9 @@ class Database extends Config
     public array $default = [
         'DSN'      => '',
         'hostname' => 'localhost',
-        'username' => 'root',
-        'password' => '',
-        'database' => 'vrs',
+        'username' => 'vitasoft_villagesurvey',
+        'password' => 'Villagesurvey_240423',
+        'database' => 'vitasoft_villagesurvey',
         'DBDriver' => 'MySQLi',
         'DBPrefix' => '',
         'pConnect' => false,
