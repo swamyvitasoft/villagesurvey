@@ -15,7 +15,7 @@ class Login extends BaseController
     public function login()
     {
         $data = [
-            'pageTitle' => 'VRS | Login'
+            'pageTitle' => 'Village Survey | Login'
         ];
         return view('login/index', $data);
     }
@@ -23,12 +23,12 @@ class Login extends BaseController
     {
         csrf_field();
         $name = "Admin";
-        $email_id = "admin@gmail.com";
+        $username = "admin";
         $password = "123456";
         $values = [
             'role' => 'Admin',
             'name' => $name,
-            'email_id' => $email_id,
+            'username' => $username,
             'password' => Hash::make($password),
         ];
         $query = $this->loginModel->insert($values);
@@ -44,12 +44,11 @@ class Login extends BaseController
     {
         if ($this->request->getMethod() == 'post') {
             $validation = $this->validate([
-                'email_id' => [
-                    'rules'  => 'required|valid_email|is_not_unique[login.email_id]',
+                'username' => [
+                    'rules'  => 'required|is_not_unique[login.username]',
                     'errors' => [
-                        'required' => 'Email ID is required.',
-                        'valid_email' => 'Email ID Incorrect Format.',
-                        'is_not_unique' => 'Email ID not registered in our server.'
+                        'required' => 'Username is required.',
+                        'is_not_unique' => 'Username not registered in our server.'
                     ],
                 ],
                 'password' => [
@@ -64,9 +63,9 @@ class Login extends BaseController
             if (!$validation) {
                 return  redirect()->back()->with('validation', $this->validator)->withInput();
             } else {
-                $email_id = $this->request->getPost('email_id');
+                $username = $this->request->getPost('username');
                 $password = $this->request->getPost('password');
-                $logged_info = $this->loginModel->where('email_id', $email_id)->first();
+                $logged_info = $this->loginModel->where('username', $username)->first();
                 $check_password = Hash::check($password, $logged_info['password']);
                 if (!$check_password) {
                     return  redirect()->back()->with('fail', 'Incorect password.')->withInput();
@@ -81,26 +80,25 @@ class Login extends BaseController
     {
         if ($this->request->getMethod() == 'post') {
             $validation = $this->validate([
-                'email_id' => [
-                    'rules'  => 'required|valid_email|is_not_unique[login.email_id]',
+                'username' => [
+                    'rules'  => 'required|is_not_unique[login.username]',
                     'errors' => [
-                        'required' => 'Email ID is required.',
-                        'valid_email' => 'Email ID Incorrect Format.',
-                        'is_not_unique' => 'Email ID not registered in our server.'
+                        'required' => 'Username is required.',
+                        'is_not_unique' => 'Username not registered in our server.'
                     ],
                 ],
             ]);
             if (!$validation) {
                 return  redirect()->back()->with('validation', $this->validator)->withInput();
             } else {
-                $email_id = $this->request->getPost('email_id');
-                $logged_info = $this->loginModel->where('email_id', $email_id)->first();
+                $username = $this->request->getPost('username');
+                $logged_info = $this->loginModel->where('username', $username)->first();
                 if (!$logged_info) {
                     return  redirect()->back()->with('fail', 'Email ID Incorrect Format.')->withInput();
                 } else {
                     helper('text');
                     $new_password = random_string('alnum', 6);
-                    $to = $email_id;
+                    $to = 'swamy@vitasoft.in';
                     $subject = 'Recover Password';
                     $message = 'Hello ' . $logged_info['name'] . ', Your new password ' . $new_password;
                     $email = \Config\Services::email();
@@ -113,7 +111,7 @@ class Login extends BaseController
                             'password' => Hash::make($new_password)
                         );
                         $query = $this->loginModel->update($logged_info['login_id'], $inputData);
-                        return  redirect()->back()->with('success', 'Instructions sent your registered e-mail.')->withInput();
+                        return  redirect()->back()->with('success', 'Please Contact Server.')->withInput();
                     } else {
                         $data = $email->printDebugger(['headers']);
                         return  redirect()->back()->with('fail', $data)->withInput();
@@ -128,20 +126,5 @@ class Login extends BaseController
             session()->remove('LoggedData');
             return  redirect()->to('login')->with('fail', 'You are now logged out.');
         }
-    }
-    public function view()
-    {
-        $loggedInfo = session()->get('LoggedData');
-        $customerInfo = $this->loginModel->where('role', 'Customer')->get()->getResultArray();
-        $data = [
-            'pageTitle' => 'Crusher Administrator | Customers',
-            'pageHeading' => 'Customers',
-            'loggedInfo' => $loggedInfo,
-            'logo' => site_url() . 'assets/images/logo.png',
-            'customerInfo'  => $customerInfo
-        ];
-        return view('common/top', $data)
-            . view('login/view')
-            . view('common/bottom');
     }
 }

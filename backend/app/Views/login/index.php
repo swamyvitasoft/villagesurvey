@@ -32,7 +32,7 @@
                 </div>
                 <div id="loginform">
                     <div class="text-center">
-                        <span class="text-dark">Enter your correct e-mail address, password below and you will go to admin dashboard.</span>
+                        <span class="text-dark">Enter your correct username, password below and you will go to admin dashboard.</span>
                     </div>
                     <div class="row mt-3">
                         <!-- Form -->
@@ -47,10 +47,10 @@
                                 <div class="col-12">
                                     <div class="input-group mb-3">
                                         <div class="input-group-prepend">
-                                            <span class="input-group-text bg-success text-white h-100" id="basic-addon1"><i class="mdi mdi-email-secure fs-4"></i></span>
+                                            <span class="input-group-text bg-success text-white h-100" id="basic-addon1"><i class="mdi mdi-lock fs-4"></i></span>
                                         </div>
-                                        <input type="text" class="form-control form-control-lg" id="email_id" name="email_id" value="<?= set_value('email_id') ?>" placeholder="E-mail" aria-label="E-mail" aria-describedby="basic-addon1" />
-                                        <div class="text-danger"><?= !empty(session()->getFlashdata('validation')) ? display_error(session()->getFlashdata('validation'), 'email_id') : '' ?></div>
+                                        <input type="text" class="form-control form-control-lg" id="username" name="username" value="<?= set_value('username') ?>" placeholder="Username" aria-label="Username" aria-describedby="basic-addon1" />
+                                        <div class="text-danger"><?= !empty(session()->getFlashdata('validation')) ? display_error(session()->getFlashdata('validation'), 'username') : '' ?></div>
                                     </div>
                                     <div class="input-group mb-3">
                                         <div class="input-group-prepend">
@@ -80,7 +80,7 @@
                 </div>
                 <div id="recoverform">
                     <div class="text-center">
-                        <span class="text-dark">Enter your e-mail address below and we will send you
+                        <span class="text-dark">Enter your username below and we will send you
                             instructions how to recover a password.</span>
                     </div>
                     <div class="row mt-3">
@@ -97,8 +97,8 @@
                                 <div class="input-group-prepend">
                                     <span class="input-group-text bg-danger text-white h-100" id="basic-addon1"><i class="mdi mdi-email fs-4"></i></span>
                                 </div>
-                                <input type="email" class="form-control form-control-lg" id="email_id" name="email_id" value="<?= set_value('email_id') ?>" placeholder="E-mail" aria-label="E-mail" aria-describedby="basic-addon1" />
-                                <div class="text-danger"><?= !empty(session()->getFlashdata('validation')) ? display_error(session()->getFlashdata('validation'), 'email_id') : '' ?></div>
+                                <input type="text" class="form-control form-control-lg" id="username" name="username" value="<?= set_value('username') ?>" placeholder="Username" aria-label="Username" aria-describedby="basic-addon1" />
+                                <div class="text-danger"><?= !empty(session()->getFlashdata('validation')) ? display_error(session()->getFlashdata('validation'), 'username') : '' ?></div>
                             </div>
                             <!-- pwd -->
                             <div class="row mt-3 pt-3 border-top border-secondary">

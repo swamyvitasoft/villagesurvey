@@ -8,5 +8,5 @@ class LoginModel extends Model
 {
     protected $table      = 'login';
     protected $primaryKey = 'login_id';
-    protected $allowedFields = ['role', 'name', 'email_id', 'password'];
+    protected $allowedFields = ['role', 'name', 'username', 'password'];
 }
