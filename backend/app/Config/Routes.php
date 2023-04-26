@@ -67,6 +67,9 @@ $routes->group('/', ['filter' => 'AuthCheck'], function ($routes) {
         $routes->get(Hash::path('index'), 'Survey::index');
         $routes->post(Hash::path('addAction'), 'Survey::addAction');
     });
+    $routes->group('members/', static function ($routes) {
+        $routes->get(Hash::path('index'), 'Members::index');
+    });
 });
 $routes->get('logout', 'Login::logout');
 

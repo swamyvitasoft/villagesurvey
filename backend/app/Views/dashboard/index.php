@@ -52,13 +52,13 @@ use App\Libraries\Hash;
                     </a>
                 </div>
                 <div class="col">
-                    <a href="<?= site_url() ?>dashboard/<?= Hash::path('index') ?>">
+                    <a href="<?= site_url() ?>members/<?= Hash::path('index') ?>">
                         <div class="card card-hover">
                             <div class="box bg-danger text-center">
                                 <h1 class="font-light text-white">
                                     <i class="mdi mdi-border-outside"></i>
                                 </h1>
-                                <h6 class="text-white">Result</h6>
+                                <h6 class="text-white">Participated</h6>
                             </div>
                         </div>
                     </a>
