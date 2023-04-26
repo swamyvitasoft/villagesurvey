@@ -56,6 +56,17 @@ $routes->group('/', ['filter' => 'AuthCheck'], function ($routes) {
         $routes->get(Hash::path('changepwd'), 'Dashboard::changepwd');
         $routes->post(Hash::path('updatepwd'), 'Dashboard::updatepwd');
     });
+    $routes->group('agents/', static function ($routes) {
+        $routes->get(Hash::path('index'), 'Agents::index');
+    });
+    $routes->group('topics/', static function ($routes) {
+        $routes->get(Hash::path('index'), 'Topics::index');
+        $routes->get('add', 'Topics::add');
+    });
+    $routes->group('survey/', static function ($routes) {
+        $routes->get(Hash::path('index'), 'Survey::index');
+        $routes->post(Hash::path('addAction'), 'Survey::addAction');
+    });
 });
 $routes->get('logout', 'Login::logout');
 
