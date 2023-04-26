@@ -13,6 +13,9 @@ use App\Libraries\Hash;
     <div class="page-wrapper d-flex no-block justify-content-center align-items-center bg-dark">
         <div class="container-fluid">
             <div class="row">
+                <h4 class="page-title"><a href="<?= site_url() ?>agents/<?= Hash::path('add') ?>">New Agent</a></h4>
+            </div>
+            <div class="row">
                 <div class="col-12">
                     <div class="card">
                         <div class="card-header">

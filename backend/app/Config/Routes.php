@@ -58,6 +58,8 @@ $routes->group('/', ['filter' => 'AuthCheck'], function ($routes) {
     });
     $routes->group('agents/', static function ($routes) {
         $routes->get(Hash::path('index'), 'Agents::index');
+        $routes->get(Hash::path('add'), 'Agents::add');
+        $routes->post(Hash::path('addAction'), 'Agents::addAction');
     });
     $routes->group('topics/', static function ($routes) {
         $routes->get(Hash::path('index'), 'Topics::index');
