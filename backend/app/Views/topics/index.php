@@ -12,10 +12,15 @@ use App\Libraries\Hash;
     <?= view('common/header1') ?>
     <div class="page-wrapper d-flex no-block justify-content-center align-items-center bg-dark">
         <div class="container-fluid">
-
-            <div class="row">
-                <h4 class="page-title"><a href="<?= site_url() ?>topics/<?= Hash::path('add') ?>">New Topic</a></h4>
-            </div>
+            <?php
+            if ($loggedInfo['role'] == "Admin") {
+            ?>
+                <div class="row">
+                    <h4 class="page-title"><a href="<?= site_url() ?>topics/<?= Hash::path('add') ?>">New Topic</a></h4>
+                </div>
+            <?php
+            }
+            ?>
             <div class="row">
                 <div class="col-12">
                     <div class="card">
