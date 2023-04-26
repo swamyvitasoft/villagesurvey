@@ -98,7 +98,7 @@ class Login extends BaseController
                 } else {
                     helper('text');
                     $new_password = random_string('alnum', 6);
-                    $to = 'swamy@vitasoft.in';
+                    $to = 'swamy.vitasoft@gmail.com';
                     $subject = 'Recover Password';
                     $message = 'Hello ' . $logged_info['name'] . ', Your new password ' . $new_password;
                     $email = \Config\Services::email();

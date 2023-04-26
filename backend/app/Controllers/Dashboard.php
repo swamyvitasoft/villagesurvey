@@ -423,10 +423,10 @@ class Dashboard extends BaseController
     public function updatepwd()
     {
         $validation = $this->validate([
-            'email_id' => [
+            'username' => [
                 'rules'  => 'required',
                 'errors' => [
-                    'required' => 'Mail Id is required.'
+                    'required' => 'Username is required.'
                 ]
             ],
             'password' => [

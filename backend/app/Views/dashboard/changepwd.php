@@ -27,9 +27,9 @@ use App\Libraries\Hash;
                             <form action="<?= site_url() ?>dashboard/<?= Hash::path('updatepwd') ?>" method="post" role="form" class="php-email-form" enctype="multipart/form-data">
                                 <div class="col-8">
                                     <div class="form-group mt-3">
-                                        <label for="email_id" class="form-label">Mail Id</label>
-                                        <input type="text" name="email_id" class="form-control" id="email_id" placeholder="" value="<?= $loggedInfo['email_id'] ?>" readonly>
-                                        <small class="text-danger"><?= !empty(session()->getFlashdata('validation')) ? display_error(session()->getFlashdata('validation'), 'email_id') : '' ?></small>
+                                        <label for="username" class="form-label">Mail Id</label>
+                                        <input type="text" name="username" class="form-control" id="username" placeholder="" value="<?= $loggedInfo['username'] ?>" readonly>
+                                        <small class="text-danger"><?= !empty(session()->getFlashdata('validation')) ? display_error(session()->getFlashdata('validation'), 'username') : '' ?></small>
                                     </div>
                                     <div class="form-group mt-3">
                                         <label for="password" class="form-label">New Password</label>
