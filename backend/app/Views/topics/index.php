@@ -12,6 +12,10 @@ use App\Libraries\Hash;
     <?= view('common/header1') ?>
     <div class="page-wrapper d-flex no-block justify-content-center align-items-center bg-dark">
         <div class="container-fluid">
+
+            <div class="row">
+                <h4 class="page-title"><a href="<?= site_url() ?>topics/<?= Hash::path('add') ?>">New Topic</a></h4>
+            </div>
             <div class="row">
                 <div class="col-12">
                     <div class="card">
@@ -29,7 +33,6 @@ use App\Libraries\Hash;
                                     <thead>
                                         <tr>
                                             <th>Topic Name</th>
-                                            <th class="none">Topic Name in Telugu</th>
                                         </tr>
                                     </thead>
                                     <tbody>
@@ -38,7 +41,6 @@ use App\Libraries\Hash;
                                         ?>
                                             <tr>
                                                 <td><?= lang($row['topic_name']) ?> </td>
-                                                <td><?= $row['topic_name_te'] ?> </td>
                                             </tr>
                                         <?php
                                         }
@@ -47,7 +49,6 @@ use App\Libraries\Hash;
                                     <tfoot>
                                         <tr>
                                             <th>Topic Name</th>
-                                            <th class="none">Topic Name in Telugu</th>
                                         </tr>
                                     </tfoot>
                                 </table>

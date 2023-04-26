@@ -63,7 +63,8 @@ $routes->group('/', ['filter' => 'AuthCheck'], function ($routes) {
     });
     $routes->group('topics/', static function ($routes) {
         $routes->get(Hash::path('index'), 'Topics::index');
-        $routes->get('add', 'Topics::add');
+        $routes->get(Hash::path('add'), 'Topics::add');
+        $routes->post(Hash::path('addAction'), 'Topics::addAction');
     });
     $routes->group('survey/', static function ($routes) {
         $routes->get(Hash::path('index'), 'Survey::index');
